@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "IconFontFace";
+  src: url("OptionsIcon.eot") format("eot"),
+    url("OptionsIcon.woff") format("woff"),
+    url("OptionsIcon.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ISN";
+  font-weight: normal;
+  font-style: normal;
+  src: url("./iransansnumbers.eot");
+  src: url("./iransansnumbers.eot#iefix") format("embedded-opentype"),
+    url("./iransansnumbers.ttf") format("truetype"),
+    url("./iransansnumbers.woff") format("woff"),
+    url("./iransansnumbers.woff2") format("woff2");
+}

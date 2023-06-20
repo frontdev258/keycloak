@@ -1,0 +1,49 @@
+{
+    "exp": 1687244128,
+    "iat": 1687242328,
+    "jti": "f9ec226a-c2c8-4336-ac0c-8d11dc9c2215",
+    "iss": "http://192.180.9.79:9080/auth/realms/mtna",
+    "aud": [
+      "medical-center-srv",
+      "account",
+      "residence-srv"
+    ],
+    "sub": "f981b65f-32ee-420f-ba5f-84a193e37409",
+    "typ": "Bearer",
+    "azp": "residence-ui",
+    "session_state": "42523002-40c9-4db5-87a4-8799f4ffcc97",
+    "acr": "1",
+    "allowed-origins": [
+      "*"
+    ],
+    "realm_access": {
+      "roles": [
+        "offline_access",
+        "uma_authorization",
+        "default-roles-mtna"
+      ]
+    },
+    "resource_access": {
+      "medical-center-srv": {
+        "roles": [
+          "UNIT_ROLE"
+        ]
+      },
+      "account": {
+        "roles": [
+          "manage-account",
+          "manage-account-links",
+          "view-profile"
+        ]
+      },
+      "residence-srv": {
+        "roles": [
+          "admin"
+        ]
+      }
+    },
+    "scope": "profile email",
+    "sid": "42523002-40c9-4db5-87a4-8799f4ffcc97",
+    "email_verified": false,
+    "preferred_username": "admin"
+  }

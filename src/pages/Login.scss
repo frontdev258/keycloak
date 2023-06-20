@@ -1,0 +1,30 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#b1ffef, #608eff);
+  &__form {
+    height: 200px;
+    width: 300px;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    box-shadow: 0px 0px 12px 2px rgb(100, 100, 100);
+    padding: 24px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.517);
+  }
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    label {
+      font-size: 18px;
+    }
+  }
+}

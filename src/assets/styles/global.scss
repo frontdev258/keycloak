@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+.ant-btn {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  padding: 10px 21px;
+  height: auto;
+  border-radius: 50px;
+}
+.ant-btn-success {
+  color: $white;
+  background-color: $success;
+}
+.ant-btn-primary {
+  color: $white;
+  background-color: $primary;
+}
+.ant-btn-error {
+  color: $white;
+  background-color: $error;
+}
+.ant-table-thead {
+  tr {
+    th {
+      background-color: $gray1 !important;
+      color: #000 !important;
+    }
+  }
+}
+
+.ant-table-tbody {
+  tr {
+    td {
+      transition: transform 0.3s linear !important;
+    }
+  }
+  tr:nth-child(even) {
+    td {
+      background-color: $gray2 !important;
+      color: #000 !important;
+    }
+  }
+  tr:hover {
+    td {
+      background-color: $gray1 !important;
+      color: rgb(97, 97, 97) !important;
+      transform: scale(1.08);
+    }
+  }
+}
+.table-layout {
+  padding: 0 50px;
+}
