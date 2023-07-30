@@ -1,15 +1,22 @@
 import jwtDecode from "jwt-decode";
+import "./Dashboard.scss";
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useAuth } from "../hooks/useAuth";
 
 const Dashboard = () => {
-  const { getApi, refreshToken } = useAuth();
+  const { getApi } = useAuth();
   const keycloak = localStorage.getItem("keycloak");
-  const [, setRefresh] = useState(1);
-  const { access_token: token } = JSON.parse(keycloak);
-  const { sub } = jwtDecode(token);
+  const [sub, setSub] = useState();
+  const { access_token: token, refresh_token } = JSON.parse(keycloak);
+  useEffect(() => {
+    if (token) {
+      let { sub } = jwtDecode(token);
+      setSub(sub);
+    }
+  }, [token]);
 
   const { data, status, refetch } = useQuery(
     `http://192.180.9.79:9000/api/users/${sub}/roles`,
@@ -17,25 +24,12 @@ const Dashboard = () => {
   );
 
   return (
-    <div>
-      <h1>سامانه جامع</h1>
-      <button
-        onClick={() => {
-          refreshToken();
-          setRefresh((p) => p + 1);
-        }}
-      >
-        refresh token
-      </button>
-      <button
-        onClick={() => {
-          localStorage.removeItem("keycloak");
-          window.location.pathname = "/";
-        }}
-      >
-        sign out
-      </button>
-      <div>
+    <div className="dashboard">
+      <nav className="dashboard__navbar">
+        <h1>سامانه جامع</h1>
+      </nav>
+
+      <div className="dashboard__main" style={{ marginTop: "16px" }}>
         {status === "loading" ? (
           <h3>شکیبا باشید</h3>
         ) : status === "error" ? (
@@ -45,7 +39,16 @@ const Dashboard = () => {
         ) : status === "success" ? (
           <>
             {data.map((value) => (
-              <a href={value.url}>{value.description}</a>
+              <a
+                style={{
+                  margin: "8px",
+                  border: "2px solid black",
+                  padding: "16px",
+                }}
+                href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
+              >
+                {value.description}
+              </a>
             ))}
           </>
         ) : null}

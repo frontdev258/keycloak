@@ -13,7 +13,7 @@ export function useAuth() {
 
     var urlencoded = new URLSearchParams();
     urlencoded.append("client_id", "residence-ui");
-    urlencoded.append("client_secret", "ZrWUmP2RSCUBm5JvmSL4QLh5B5PqIm4b");
+    // urlencoded.append("client_secret", "ZrWUmP2RSCUBm5JvmSL4QLh5B5PqIm4b");
     urlencoded.append("refresh_token", refresh_token);
     urlencoded.append("grant_type", "refresh_token");
 
@@ -25,7 +25,7 @@ export function useAuth() {
     };
 
     fetch(
-      "http://192.180.9.79:9080/auth/realms/mtna/protocol/openid-connect/token",
+      "http://192.180.9.79:8085/auth/realms/mtna/protocol/openid-connect/token",
       requestOptions
     )
       .then((response) => response.text())
