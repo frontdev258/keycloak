@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./assets/styles/global.scss";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 
 const App = () => {
   const keycloak = localStorage.getItem("keycloak");
@@ -11,9 +12,10 @@ const App = () => {
   return (
     <>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route
-          path="/login"
-          element={isUserLoggedIn ? <Navigate to="/" /> : <Login />}
+          path="/logout"
+          element={isUserLoggedIn ? <Logout /> : <Navigate to="login" />}
         />
         <Route
           path="/"

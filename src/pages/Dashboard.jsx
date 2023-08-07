@@ -5,12 +5,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { getApi } = useAuth();
   const keycloak = localStorage.getItem("keycloak");
   const [sub, setSub] = useState();
-  const { access_token: token, refresh_token } = JSON.parse(keycloak);
+  // const { access_token: token, refresh_token } = JSON.parse(keycloak);
+  const { access_token: token, refresh_token } = keycloak
+    ? JSON.parse(keycloak)
+    : { access_token: null, refresh_token: null };
   useEffect(() => {
     if (token) {
       let { sub } = jwtDecode(token);
@@ -28,6 +32,8 @@ const Dashboard = () => {
       <nav className="dashboard__navbar">
         <h1>سامانه جامع</h1>
       </nav>
+
+      <Link to={"logout"}>خروج</Link>
 
       <div className="dashboard__main" style={{ marginTop: "16px" }}>
         {status === "loading" ? (
@@ -50,6 +56,16 @@ const Dashboard = () => {
                 {value.description}
               </a>
             ))}
+            <a
+              style={{
+                margin: "8px",
+                border: "2px solid black",
+                padding: "16px",
+              }}
+              href={`http://192.168.4.20:3000/?token=${token}&refreshToken=${refresh_token}`}
+            >
+              مدیریت کاربران
+            </a>
           </>
         ) : null}
       </div>

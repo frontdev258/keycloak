@@ -4,7 +4,9 @@ export const axiosInstance = axios.create({});
 
 export function useAuth() {
   const keycloak = localStorage.getItem("keycloak");
-  const { access_token: token, refresh_token } = JSON.parse(keycloak);
+  const { access_token: token, refresh_token } = keycloak
+    ? JSON.parse(keycloak)
+    : { access_token: null, refresh_token: null };
 
   const refreshToken = () => {
     var myHeaders = new Headers();
