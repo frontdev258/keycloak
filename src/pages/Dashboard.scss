@@ -4,6 +4,48 @@
   display: flex;
   flex-direction: column;
   &__main {
-    margin-top: 16px;
+    display: flex;
+    margin: 0;
+    gap: 1em;
+    padding: 10px;
+  }
+  &__header {
+    display: flex;
+    width: 100%;
+    background: #ffffff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    &__logo {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      &__img {
+        width: 60px;
+      }
+      &__title {
+        margin: 0;
+      }
+    }
+  }
+  .clients {
+    border: 1px solid #dddddd;
+    background: #fff;
+    color: #0095ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+    height: 50px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    &:hover {
+      background: #0095ff;
+      color: #ffffff;
+    }
   }
 }

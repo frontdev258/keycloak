@@ -1,3 +1,22 @@
 @import "./variables.scss";
 
 @import "../font/fonts.css";
+
+* {
+  box-sizing: border-box;
+}
+.logout__btn {
+  display: block;
+  width: 80px;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  background: #eb4d4b;
+  color: #fff;
+  border-radius: 26px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  &:hover {
+    background: #d91d1a;
+  }
+}

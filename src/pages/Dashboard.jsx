@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-router-dom";
+import LogoImage from "../assets/img/logo.png";
+import Footer from "./Footer";
 
 const Dashboard = () => {
   const { getApi } = useAuth();
@@ -29,13 +31,22 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <nav className="dashboard__navbar">
-        <h1>سامانه جامع</h1>
-      </nav>
+      <header className="dashboard__header">
+        <div className="dashboard__header__logo">
+          <img
+            src={LogoImage}
+            class="dashboard__header__logo__img"
+            alt="ارتش جمهوری اسلامی ایران"
+          />
+          <p class="dashboard__header__logo__title">سامانه جامع سیستم ها </p>
+        </div>
 
-      <Link to={"logout"}>خروج</Link>
+        <Link className="logout__btn" to={"logout"}>
+          خروج
+        </Link>
+      </header>
 
-      <div className="dashboard__main" style={{ marginTop: "16px" }}>
+      <div className="dashboard__main">
         {status === "loading" ? (
           <h3>شکیبا باشید</h3>
         ) : status === "error" ? (
@@ -44,31 +55,25 @@ const Dashboard = () => {
           </h3>
         ) : status === "success" ? (
           <>
-            {data.map((value) => (
+            {/* {data.map((value) => (
               <a
-                style={{
-                  margin: "8px",
-                  border: "2px solid black",
-                  padding: "16px",
-                }}
+                className="clients"
                 href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
               >
                 {value.description}
               </a>
-            ))}
+            ))} */}
             <a
-              style={{
-                margin: "8px",
-                border: "2px solid black",
-                padding: "16px",
-              }}
+              className="clients"
               href={`http://192.168.4.20:3000/?token=${token}&refreshToken=${refresh_token}`}
             >
-              مدیریت کاربران
+              سامانه صدور مجوز مراکز درمانی
             </a>
           </>
         ) : null}
       </div>
+
+      <Footer />
     </div>
   );
 };

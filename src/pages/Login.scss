@@ -4,27 +4,93 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(#b1ffef, #608eff);
-  &__form {
-    height: 200px;
-    width: 300px;
-    max-width: 90%;
-    max-height: 90%;
+  background: radial-gradient(rgba(99, 187, 255, 0.4901960784), #38a8fb);
+  direction: ltr;
+  flex-direction: column;
+  &__title {
+    font-size: 24px;
+    margin-top: -50px;
+  }
+  &__wrapper {
+    border: 1px solid #ffffff;
+    background-color: rgb(255 255 255 / 65%);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid black;
-    box-shadow: 0px 0px 12px 2px rgb(100, 100, 100);
-    padding: 24px;
+    padding: 16px;
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.517);
+    width: 700px;
+    min-height: 300px;
+    box-shadow: 0 0 14px 7px #ffffff6b;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__form {
+    // border: 1px solid #ffffff;
+    // background-color: rgb(255 255 255 / 65%);
+    // display: flex;
+    // padding: 16px;
+    // border-radius: 8px;
+    // width: 700px;
+    // min-height: 300px;
+    // box-shadow: 0 0 14px 7px #ffffff6b;
+
+    // height: 200px;
+    // width: 300px;
+    // max-width: 90%;
+    // max-height: 90%;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // border: 1px solid black;
+    // box-shadow: 0px 0px 12px 2px rgb(100, 100, 100);
+    // padding: 24px;
+    // border-radius: 8px;
+    // background-color: rgba(255, 255, 255, 0.517);
   }
   &__input {
     display: flex;
     flex-direction: column;
     margin-bottom: 8px;
     label {
-      font-size: 18px;
+      font-size: 16px;
+      text-align: right;
+      margin-bottom: 2px;
+    }
+    input {
+      border: 1px solid #0000001a;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+  }
+  button {
+    background: #259bef;
+    color: #f9f9f9;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 0;
+    box-shadow: 0px 0px 5px 3px rgb(0 0 0 / 15%);
+    transition: all 0.15s linear;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px;
+    font-family: inherit;
+    padding: 2px 10px;
+    &:hover {
+      background-color: #45b2ff;
+      color: #ffffff;
+    }
+  }
+  &__logo {
+    &__img {
+      width: 150px;
+      filter: drop-shadow(0px 0px 6px #000000aa);
+    }
+    &__title {
+      font-size: 24px;
+      text-align: center;
+      font-weight: 900;
     }
   }
 }

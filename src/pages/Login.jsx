@@ -1,5 +1,7 @@
 import React from "react";
 import "./Login.scss";
+import LogoImage from "../assets/img/logo.png";
+import Footer from "./Footer";
 
 const Login = () => {
   function login(username, password) {
@@ -34,30 +36,37 @@ const Login = () => {
   }
   return (
     <div className="login">
-      <form
-        onSubmitCapture={(e) => {
-          e.preventDefault();
-          let elements = e.target.elements;
-          login(elements.username.value, elements.password.value);
-        }}
-        className="login__form"
-      >
-        <div className="login__input">
-          <label htmlFor="username">نام کاربری</label>
-          <input name="username" id="username" placeholder="نام کاربری" />
-        </div>
-        <div className="login__input">
-          <label htmlFor="password">رمز عبور</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="رمز عبور"
-          />
-        </div>
+      <h1 className="login__title"> ورود به پنل کاربری</h1>
+      <div className="login__wrapper">
+        <form
+          onSubmitCapture={(e) => {
+            e.preventDefault();
+            let elements = e.target.elements;
+            login(elements.username.value, elements.password.value);
+          }}
+          className="login__form"
+        >
+          <div className="login__input">
+            <label htmlFor="username">:نام کاربری</label>
+            <input name="username" id="username" />
+          </div>
+          <div className="login__input">
+            <label htmlFor="password">:رمز عبور</label>
+            <input type="password" name="password" id="password" />
+          </div>
 
-        <button type="submit">ورود</button>
-      </form>
+          <button type="submit">ورود</button>
+        </form>
+        <div className="login__logo">
+          <img
+            src={LogoImage}
+            class="login__logo__img"
+            alt="ارتش جمهوری اسلامی ایران"
+          />
+          <p class="login__logo__title">سامانه جامع سیستم ها </p>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
