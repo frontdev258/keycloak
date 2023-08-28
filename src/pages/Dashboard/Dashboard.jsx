@@ -4,10 +4,11 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import LogoImage from "../assets/img/logo.png";
-import Footer from "./Footer";
+import LogoImage from "../../assets/img/logo.png";
+import Footer from "../../Components/Footer/Footer";
+import CustomSpinner from "../../Components/CustomSpinner/CustomSpinner";
 
 const Dashboard = () => {
   const { getApi } = useAuth();
@@ -48,26 +49,26 @@ const Dashboard = () => {
 
       <div className="dashboard__main">
         {status === "loading" ? (
-          <h3>شکیبا باشید</h3>
+          <CustomSpinner />
         ) : status === "error" ? (
           <h3>
             خطا در انجام عملیات <span onClick={refetch}>تلاش مجدد</span>
           </h3>
         ) : status === "success" ? (
           <>
-            {/* {data.map((value) => (
+            {data.map((value) => (
               <a
                 className="clients"
                 href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
               >
                 {value.description}
               </a>
-            ))} */}
+            ))}
             <a
               className="clients"
               href={`http://192.168.4.20:3000/?token=${token}&refreshToken=${refresh_token}`}
             >
-              سامانه صدور مجوز مراکز درمانی
+              سامانه مدیریت کاربران
             </a>
           </>
         ) : null}

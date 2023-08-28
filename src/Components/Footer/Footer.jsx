@@ -1,4 +1,4 @@
-import MatnaImage from "../assets/img/matna.png";
+import MatnaImage from "../../assets/img/matna.png";
 import "./Footer.scss";
 
 const Footer = () => {

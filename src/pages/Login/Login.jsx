@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
-import LogoImage from "../assets/img/logo.png";
-import Footer from "./Footer";
+import LogoImage from "../../assets/img/logo.png";
+import Footer from "../../Components/Footer/Footer";
 
 const Login = () => {
   function login(username, password) {
