@@ -85,6 +85,7 @@ const Dashboard = () => {
                         className="clients"
                         target="_blank"
                         rel="noreferrer noopener"
+                        key={value.id}
                         href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
                     >
                       {value.description}
