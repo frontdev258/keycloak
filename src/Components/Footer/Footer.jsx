@@ -3,14 +3,14 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <div class="footer">
-      <div class="footer__text">
+    <div className="footer">
+      <div className="footer__text">
         مرکز تولید نرم افزار معاونت فناوری اطلاعات آجا
       </div>
       <img
         src={MatnaImage}
         alt="مرکز تولید نرم افزار معاونت فناوری اطلاعات آجا"
-        class="footer__logo"
+        className="footer__logo"
       />
     </div>
   );

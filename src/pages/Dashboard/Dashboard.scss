@@ -49,4 +49,35 @@
       color: #ffffff;
     }
   }
+  .panels {
+    border: 1px solid #dddddd;
+    background: #0095ff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 15px;
+    height: 50px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    &:hover {
+      background: #ffffff;
+      color: #0095ff;
+    }
+  }
+  .content {
+    width: 100%;
+  }
+  .list {
+    margin-bottom: 12px;
+  }
+  .flex_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
 }

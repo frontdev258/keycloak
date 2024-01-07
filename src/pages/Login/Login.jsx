@@ -60,10 +60,10 @@ const Login = () => {
         <div className="login__logo">
           <img
             src={LogoImage}
-            class="login__logo__img"
+            className="login__logo__img"
             alt="ارتش جمهوری اسلامی ایران"
           />
-          <p class="login__logo__title">سامانه جامع سیستم ها </p>
+          <p className="login__logo__title">سامانه جامع سیستم ها </p>
         </div>
       </div>
       <Footer />

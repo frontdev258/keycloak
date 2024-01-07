@@ -27,7 +27,10 @@ const Dashboard = () => {
 
   const { data, status, refetch } = useQuery(
     `http://192.180.9.79:9000/api/users/${sub}/roles`,
-    getApi
+    getApi,
+      {
+        enabled: !!sub
+      }
   );
 
   return (
@@ -36,10 +39,10 @@ const Dashboard = () => {
         <div className="dashboard__header__logo">
           <img
             src={LogoImage}
-            class="dashboard__header__logo__img"
+            className="dashboard__header__logo__img"
             alt="ارتش جمهوری اسلامی ایران"
           />
-          <p class="dashboard__header__logo__title">سامانه جامع سیستم ها </p>
+          <p className="dashboard__header__logo__title">سامانه جامع سیستم ها </p>
         </div>
 
         <Link className="logout__btn" to={"logout"}>
@@ -56,20 +59,39 @@ const Dashboard = () => {
           </h3>
         ) : status === "success" ? (
           <>
-            {data.map((value) => (
-              <a
-                className="clients"
-                href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
-              >
-                {value.description}
-              </a>
-            ))}
-            <a
-              className="clients"
-              href={`http://192.168.4.20:3000/?token=${token}&refreshToken=${refresh_token}`}
-            >
-              سامانه مدیریت کاربران
-            </a>
+            <div className="content">
+              <h4 style={{
+                fontSize: '24px',
+                marginBlock: '0.5em'
+              }}>سامانه‌های مدیران</h4>
+              <div className="list flex_wrap">
+                <a
+                    className="panels"
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`http://192.180.9.217:3000/?token=${token}&refreshToken=${refresh_token}`}
+                >
+                  سامانه مدیریت کاربران و سطوح دسترسی
+                </a>
+              </div>
+              <hr/>
+                <h4 style={{
+                    fontSize: '24px',
+                    marginBlock: '0.5em'
+                }}>کارتابل های در دسترس</h4>
+              <div className="list flex_wrap">
+                {data.map((value) => (
+                    <a
+                        className="clients"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        href={`${value.url}/?token=${token}&refreshToken=${refresh_token}`}
+                    >
+                      {value.description}
+                    </a>
+                ))}
+              </div>
+            </div>
           </>
         ) : null}
       </div>
