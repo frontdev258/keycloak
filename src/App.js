@@ -11,8 +11,8 @@ import Layout from "./Components/Layout/Layout";
 
 const App = () => {
   const keycloak = localStorage.getItem("keycloak");
-  // const isUserLoggedIn = !!keycloak;
-  const isUserLoggedIn = true;
+  const isUserLoggedIn = !!keycloak;
+  // const isUserLoggedIn = true;
 
   const ProtectedRoute = ({children}) => {
     if (!isUserLoggedIn) {
