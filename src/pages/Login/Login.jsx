@@ -24,7 +24,7 @@ const Login = () => {
     };
 
     fetch(
-      "http://192.180.9.79:9080/auth/realms/mtna/protocol/openid-connect/token",
+      "http://192.168.1.192:8000/auth/realms/mtna/protocol/openid-connect/token",
       requestOptions
     )
       .then((response) => response.text())
