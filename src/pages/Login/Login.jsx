@@ -6,25 +6,33 @@ import Footer from "../../Components/Footer/Footer";
 const Login = () => {
   function login(username, password) {
     var myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer");
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Content-Type", "application/json");
+    // myHeaders.append("Authorization", "Bearer");
+    // myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-    var urlencoded = new URLSearchParams();
-    urlencoded.append("client_id", "residence-ui");
-    urlencoded.append("client_secret", "ZrWUmP2RSCUBm5JvmSL4QLh5B5PqIm4b");
-    urlencoded.append("grant_type", "password");
-    urlencoded.append("username", username);
-    urlencoded.append("password", password);
+    // var urlencoded = new URLSearchParams();
+    // urlencoded.append("client_id", "residence-ui");
+    // urlencoded.append("client_secret", "ZrWUmP2RSCUBm5JvmSL4QLh5B5PqIm4b");
+    // urlencoded.append("grant_type", "password");
+    // urlencoded.append("username", username);
+    // urlencoded.append("password", password);
 
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: urlencoded,
+      body: JSON.stringify({
+        client_id: "authorization-srv",
+        client_secret: "SZ6xqVKq1FEvBO9I9o0KxcB99kSVEO2T",
+        // grant_type: "password",
+        username: username,
+        password: password,
+      }),
       redirect: "follow",
     };
 
+    // "http://localhost:8000/auth/realms/mtna/protocol/openid-connect/token",
     fetch(
-      "http://192.168.1.192:8000/auth/realms/mtna/protocol/openid-connect/token",
+      "http://localhost:9080/api/auth/login",
       requestOptions
     )
       .then((response) => response.text())

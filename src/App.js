@@ -46,8 +46,9 @@ const App = () => {
             element={<Navigate to={"/"}/>}
           />
         </Route>
+        <Route path="/login" element={<Login/>}/>
         {
-          !isUserLoggedIn ? (<Route path="/login" element={<Login/>}/>) : null
+          !isUserLoggedIn ? (<Route path="*" element={<Navigate to="/login"/>} />) : null
         }
       </Routes>
     </>

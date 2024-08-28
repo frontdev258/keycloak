@@ -11,7 +11,7 @@ const UserList = () => {
   const navigate = useNavigate();
 
   const {data, status, refetch} = useQuery(
-    `/api/user${paramsSerializer(pagination)}`,
+    `http://localhost:8000/api/user${paramsSerializer(pagination)}`,
     getApi,
     {
       enabled: !!pagination,
