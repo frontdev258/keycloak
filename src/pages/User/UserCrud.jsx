@@ -3,10 +3,21 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useAuth} from "../../hooks/useAuth";
 import {useMutation, useQuery} from "react-query";
 import {Controller, useForm} from "react-hook-form";
-import {Box, Button, Chip, Dialog, DialogActions, DialogContent, DialogTitle, Grid} from "@mui/material";
+import {
+  Box,
+  Button,
+  Chip,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Grid
+} from "@mui/material";
 import RenderFormInput from "../../Components/RenderFormInput/RenderFormInput";
 import {SimpleTreeView, TreeItem} from "@mui/x-tree-view";
 import {fakeOrganizations} from "../../@shared/const";
+import {CheckOutlined} from "@mui/icons-material";
 
 const UserCrud = () => {
   const {id} = useParams();
@@ -152,7 +163,7 @@ const UserCrud = () => {
     DTO.attributes = {org: [selectedOrganizationId]};
     mutate({
       method: 'post',
-      endpoint: 'api/user',
+      endpoint: 'http://localhost:8000/api/user',
       data: {
         ...DTO,
         ...(isUpdate() ? {id} : {})
@@ -257,6 +268,19 @@ const UserCrud = () => {
           </Button>
         </Grid>
       </Grid>
+      <Box sx={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "end", mt: 4 }}>
+        <Button
+          type="submit"
+          form="filtersForm"
+          disabled={isLoading}
+          variant="contained"
+          endIcon={isLoading ? <CircularProgress size={14} /> : <CheckOutlined />}
+          color="success"
+          sx={{ width: "150px" }}
+        >
+          ذخیره
+        </Button>
+      </Box>
     </form>
     <Grid container>
       <Grid item
