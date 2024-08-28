@@ -24,11 +24,13 @@ const Dashboard = () => {
     }
   }, [token]);
 
+  // `http://localhost:8000/api/users/${sub}/roles`,
   const {data, status, refetch} = useQuery(
-    `http://localhost:8000/api/users/${sub}/roles`,
+    `http://localhost:8000/api/clients`,
     getApi,
     {
-      enabled: !!sub
+      enabled: !!sub,
+      select: (res) => res.data?.filter(item => item.url),
     }
   );
 
