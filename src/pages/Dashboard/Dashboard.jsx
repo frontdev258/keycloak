@@ -76,7 +76,7 @@ const Dashboard = () => {
                 <h3>
                   خطا در انجام عملیات <span onClick={refetch}>تلاش مجدد</span>
                 </h3>
-              ) : status === "success" ? (data.map((value) => (
+              ) : status === "success" ? (data?.map((value) => (
                 <a
                   className="clients"
                   target="_blank"
