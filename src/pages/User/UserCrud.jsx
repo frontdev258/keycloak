@@ -37,7 +37,7 @@ const UserCrud = () => {
     queryKey: [`http://localhost:8000/api/user/${id}`],
     queryFn: getApi,
     select: (res) => res.result,
-    enabled: !!id
+    enabled: (!!id && isUpdate())
   });
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const UserCrud = () => {
     status: organizationStatus,
     refetch: organizationRefetch
   } = useQuery({
-    queryKey: [`organizations/root-organization`],
+    queryKey: [`http://localhost:8000/api/organizations/root-organization`],
     queryFn: getApi,
     select: (res) => res.data,
     enabled: !!id,
