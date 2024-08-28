@@ -25,7 +25,7 @@ const Dashboard = () => {
   }, [token]);
 
   const {data, status, refetch} = useQuery(
-    `/api/users/${sub}/roles`,
+    `http://localhost:8000/api//api/users/${sub}/roles`,
     getApi,
     {
       enabled: !!sub
