@@ -37,8 +37,10 @@ const Login = () => {
     )
       .then((response) => response.text())
       .then((result) => {
-        window.localStorage.setItem("keycloak", result);
-        window.location.pathname = "/";
+        if (result && JSON.parse(result) && JSON.parse(result)?.data) {
+          window.localStorage.setItem("keycloak", JSON.stringify(JSON.parse(result).data));
+          window.location.pathname = "/";
+        }
       })
       .catch((error) => console.log("error", error));
   }
