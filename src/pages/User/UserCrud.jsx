@@ -18,6 +18,7 @@ import RenderFormInput from "../../Components/RenderFormInput/RenderFormInput";
 import {SimpleTreeView, TreeItem} from "@mui/x-tree-view";
 import {fakeOrganizations} from "../../@shared/const";
 import {CheckOutlined} from "@mui/icons-material";
+import {useSnackbar} from "../../hooks/useSnackbar";
 
 const UserCrud = () => {
   const {id} = useParams();
@@ -29,6 +30,7 @@ const UserCrud = () => {
   const {isLoading, mutate} = useMutation({
     mutationFn: sendRequest
   });
+  const snackbar = useSnackbar();
   const {
     data,
     status,
@@ -160,6 +162,15 @@ const UserCrud = () => {
         ...DTO,
         ...(pageType === 'EDIT' ? {id} : {})
       }
+    }, {
+      onSuccess: (res) => {
+        if (res.message !== "ok") {
+          snackbar(res.message, "error");
+        } else {
+          snackbar("عملیات با موفقیت انجام شد", "success");
+        }
+      },
+      onError: (res) => snackbar("خطا در انجام عملیات", "error")
     })
   }
 

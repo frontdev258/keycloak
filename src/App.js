@@ -8,6 +8,7 @@ import Logout from "./pages/Logout/Logout";
 import UserCrud from "./pages/User/UserCrud";
 import UserList from "./pages/User/UserList";
 import Layout from "./Components/Layout/Layout";
+import {SnackbarProvider} from "./Context/SnackbarContext";
 
 const App = () => {
   const keycloak = localStorage.getItem("keycloak");
@@ -23,34 +24,36 @@ const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route element={<ProtectedRoute/>}>
-          <Route path="/user">
-            <Route path='list'
+      <SnackbarProvider>
+        <Routes>
+          <Route element={<ProtectedRoute/>}>
+            <Route path="/user">
+              <Route path='list'
+                     index
+                     element={<UserList/>}/>
+              <Route path=':id'
+                     index
+                     element={<UserCrud/>}/>
+            </Route>
+            <Route path="/"
                    index
-                   element={<UserList/>}/>
-            <Route path=':id'
-                   index
-                   element={<UserCrud/>}/>
+                   element={<Dashboard/>}/>
+            <Route
+              path="/logout"
+              index
+              element={<Logout/>}
+            />
+            <Route
+              path="*"
+              element={<Navigate to={"/"}/>}
+            />
           </Route>
-          <Route path="/"
-                 index
-                 element={<Dashboard/>}/>
-          <Route
-            path="/logout"
-            index
-            element={<Logout/>}
-          />
-          <Route
-            path="*"
-            element={<Navigate to={"/"}/>}
-          />
-        </Route>
-        <Route path="/login" element={<Login/>}/>
-        {
-          !isUserLoggedIn ? (<Route path="*" element={<Navigate to="/login"/>} />) : null
-        }
-      </Routes>
+          <Route path="/login" element={<Login/>}/>
+          {
+            !isUserLoggedIn ? (<Route path="*" element={<Navigate to="/login"/>} />) : null
+          }
+        </Routes>
+      </SnackbarProvider>
     </>
   );
 };
