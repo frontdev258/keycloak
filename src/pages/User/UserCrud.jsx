@@ -38,7 +38,7 @@ const UserCrud = () => {
   } = useQuery({
     queryKey: [`http://localhost:8000/api/user/id?id=${id}`],
     queryFn: getApi,
-    select: (res) => res.result,
+    select: (res) => res.data,
     enabled: (!!id && pageType === 'EDIT')
   });
 
@@ -79,23 +79,30 @@ const UserCrud = () => {
         name: "firstName",
         inputType: "text",
         label: "نام",
-        // elementProps: {disabled: true}
+        elementProps: {
+          defaultValue: data?.firstName || '',
+        }
       },
       {
         name: "lastName",
         inputType: "text",
         label: "نام خانوادگی",
-        // elementProps: {disabled: true}
+        elementProps: {
+          defaultValue: data?.lastName || '',
+        }
       },
       {
         name: "username",
         inputType: "text",
         label: "نام کاربری",
-        elementProps: {disabled: pageType === 'EDIT'}
+        elementProps: {
+          defaultValue: data?.username || '',
+          disabled: pageType === 'EDIT'
+        }
       },
       {
         name: "password",
-        inputType: "text",
+        inputType: "password",
         label: "رمز عبور",
         // elementProps: {disabled: true}
       },
@@ -109,7 +116,9 @@ const UserCrud = () => {
         name: "email",
         inputType: "text",
         label: "ایمیل",
-        // elementProps: {disabled: true}
+        elementProps: {
+          defaultValue: data?.email || '',
+        }
       },
       {
         name: "userEnabled",
@@ -118,7 +127,6 @@ const UserCrud = () => {
         label: "وضعیت",
         watch,
         refetch: organizationRefetch,
-        defaultValue: true,
         options: [
           {
             id: undefined,
@@ -142,13 +150,14 @@ const UserCrud = () => {
           ))}
         </Box>),
         elementProps: {
+          defaultValue: data?.userEnabled || true,
           onChange: (event) => {
             setValue('userEnabled', event.target.value);
           }
         }
       }
     ],
-    []
+    [data]
   );
 
   const onSubmitHandler = () => {
@@ -211,6 +220,12 @@ const UserCrud = () => {
       });
     }
   }, [organizations, setOrgansLinear]);
+
+  useEffect(() => {
+    if (pageType === "EDIT" && data.attributes?.org) {
+      handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
+    }
+  }, [organizations, data]);
 
   const selectedOrganization = useMemo(() => (
     organsLinear.find(organ => organ.id === selectedOrganizationId)
