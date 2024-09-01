@@ -168,6 +168,7 @@ const UserCrud = () => {
           snackbar(res.message, "error");
         } else {
           snackbar("عملیات با موفقیت انجام شد", "success");
+          navigate('/user/list');
         }
       },
       onError: (res) => snackbar("خطا در انجام عملیات", "error")
