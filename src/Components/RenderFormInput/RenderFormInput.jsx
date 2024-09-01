@@ -1,6 +1,6 @@
 import {
   Autocomplete,
-  Box, Button,
+  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import ErrorHandler from "../errorHandler/ErrorHandler";
+import PasswordInput from "./PasswordInput";
 // import SelectCity from "./SelectCity.bak-tsx";
 // import SelectLocation from "./SelectLocation";
 
@@ -50,18 +51,18 @@ const RenderFormInput = React.forwardRef((props, ref) => {
       />
     );
   }
-  // if (props.inputType === "password") {
-  //   return (
-  //     <PasswordInput
-  //       name={name}
-  //       label={label}
-  //       inputRef={ref}
-  //       errors={errors?.[name]?.message}
-  //       controllerField={controllerField}
-  //       elementProps={elementProps}
-  //     />
-  //   );
-  // }
+  if (props.inputType === "password") {
+    return (
+      <PasswordInput
+        name={name}
+        label={label}
+        inputRef={ref}
+        errors={errors?.[name]?.message}
+        controllerField={controllerField}
+        elementProps={elementProps}
+      />
+    );
+  }
   // if (props.inputType === "date") {
   //   const {setValue, watch} = props;
   //   return (

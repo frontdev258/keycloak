@@ -108,7 +108,7 @@ const UserCrud = () => {
       },
       {
         name: "secondPassword",
-        inputType: "text",
+        inputType: "password",
         label: "تکرار رمز عبور",
         // elementProps: {disabled: true}
       },
