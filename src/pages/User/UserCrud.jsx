@@ -232,11 +232,11 @@ const UserCrud = () => {
             setValue(key, value);
           })
       }
-      if (data?.attributes?.org && organizations?.id) {
-        handleSelectOrganization(null, organizations.find(org => org.id === data.attributes.org));
+      if (data?.attributes?.org && organsLinear?.length) {
+        handleSelectOrganization(null, organsLinear.find(org => org.id === data.attributes.org));
       }
     }
-  }, [pageType, organizations, data]);
+  }, [pageType, organsLinear, data]);
 
   const selectedOrganization = useMemo(() => (
     organsLinear.find(organ => organ.id === selectedOrganizationId)
