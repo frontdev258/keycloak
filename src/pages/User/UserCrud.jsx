@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import RenderFormInput from "../../Components/RenderFormInput/RenderFormInput";
 import {SimpleTreeView, TreeItem} from "@mui/x-tree-view";
-import {fakeOrganizations} from "../../@shared/const";
 import {CheckOutlined} from "@mui/icons-material";
 import {useSnackbar} from "../../hooks/useSnackbar";
 
@@ -174,8 +173,9 @@ const UserCrud = () => {
       }
     }, {
       onSuccess: (res) => {
-        if (res.message !== "ok") {
-          snackbar(res.message, "error");
+        const response = res?.data;
+        if (response?.message !== "ok") {
+          snackbar(response.message, "error");
         } else {
           snackbar("عملیات با موفقیت انجام شد", "success");
           navigate('/user/list');
@@ -302,15 +302,15 @@ const UserCrud = () => {
           </Button>
         </Grid>
       </Grid>
-      <Box sx={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "end", mt: 4 }}>
+      <Box sx={{width: "100%", display: "flex", alignItems: "center", justifyContent: "end", mt: 4}}>
         <Button
           type="submit"
           form="userInfo"
           disabled={isLoading}
           variant="contained"
-          endIcon={isLoading ? <CircularProgress size={14} /> : <CheckOutlined />}
+          endIcon={isLoading ? <CircularProgress size={14}/> : <CheckOutlined/>}
           color="success"
-          sx={{ width: "150px" }}
+          sx={{width: "150px"}}
         >
           ذخیره
         </Button>
