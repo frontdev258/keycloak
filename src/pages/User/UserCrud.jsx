@@ -156,7 +156,7 @@ const UserCrud = () => {
     const DTO = getValues();
     DTO.attributes = {org: [selectedOrganizationId]};
     mutate({
-      method: 'post',
+      method: pageType === 'CREATE' ? 'post' : 'put',
       endpoint: 'http://localhost:8000/api/user',
       data: {
         ...DTO,
