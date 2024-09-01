@@ -161,9 +161,11 @@ const UserCrud = () => {
   );
 
   const onSubmitHandler = () => {
-    console.log(getValues());
     const DTO = getValues();
     DTO.attributes = {org: [selectedOrganizationId]};
+    if (pageType === 'EDIT') {
+      delete DTO.username;
+    }
     mutate({
       method: pageType === 'CREATE' ? 'post' : 'put',
       endpoint: 'http://localhost:8000/api/user',
