@@ -59,7 +59,6 @@ const UserCrud = () => {
     queryFn: getApi,
     select: (res) => res.data,
     enabled: !!id,
-    placeholderData: fakeOrganizations
   });
   const navigate = useNavigate();
 
