@@ -232,7 +232,7 @@ const UserCrud = () => {
             setValue(key, value);
           })
       }
-      if (data?.attributes?.org) {
+      if (data?.attributes?.org && organizations?.length) {
         handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
       }
     }
