@@ -37,7 +37,7 @@ const UserCrud = () => {
     queryKey: [`http://localhost:8000/api/user/${id}`],
     queryFn: getApi,
     select: (res) => res.result,
-    enabled: (!!id && isUpdate())
+    enabled: (!!id && pageType === 'EDIT')
   });
 
   useEffect(() => {
@@ -47,14 +47,6 @@ const UserCrud = () => {
       setPageType('EDIT');
     }
   }, [id, setPageType]);
-
-  const isCreate = () => {
-    return pageType === 'CREATE'
-  }
-
-  const isUpdate = () => {
-    return pageType === 'EDIT'
-  }
 
   const {
     data: organizations,
@@ -97,7 +89,7 @@ const UserCrud = () => {
         name: "username",
         inputType: "text",
         label: "نام کاربری",
-        elementProps: {disabled: isUpdate()}
+        elementProps: {disabled: pageType === 'EDIT'}
       },
       {
         name: "password",
@@ -166,7 +158,7 @@ const UserCrud = () => {
       endpoint: 'http://localhost:8000/api/user',
       data: {
         ...DTO,
-        ...(isUpdate() ? {id} : {})
+        ...(pageType === 'EDIT' ? {id} : {})
       }
     })
   }
