@@ -231,8 +231,8 @@ const UserCrud = () => {
             setValue(key, value);
           })
       }
-      if (data?.attributes?.org) {
-        setSelectedOrganizationId(data.attributes.org);
+      if (data?.attributes?.org?.length) {
+        setSelectedOrganizationId(data.attributes.org[0]);
       }
     }
   }, [pageType, setSelectedOrganizationId, data]);
