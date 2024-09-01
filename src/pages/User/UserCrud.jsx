@@ -149,8 +149,7 @@ const UserCrud = () => {
     []
   );
 
-  const onSubmitHandler = (event) => {
-    event?.preventDefault();
+  const onSubmitHandler = () => {
     console.log(getValues());
     const DTO = getValues();
     DTO.attributes = {org: [selectedOrganizationId]};
