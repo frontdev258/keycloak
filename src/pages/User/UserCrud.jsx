@@ -34,7 +34,7 @@ const UserCrud = () => {
     status,
     refetch
   } = useQuery({
-    queryKey: [`http://localhost:8000/api/user/${id}`],
+    queryKey: [`http://localhost:8000/api/user/id?id=${id}`],
     queryFn: getApi,
     select: (res) => res.result,
     enabled: (!!id && pageType === 'EDIT')
