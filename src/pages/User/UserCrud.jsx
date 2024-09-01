@@ -237,9 +237,12 @@ const UserCrud = () => {
     }
   }, [pageType, setSelectedOrganizationId, data]);
 
-  const selectedOrganization = useMemo(() => (
-    organsLinear.find(organ => organ.id === selectedOrganizationId)
-  ), [selectedOrganizationId, organsLinear])
+  const selectedOrganization = useMemo(() => {
+    if (selectedOrganizationId && organsLinear?.length) {
+      return organsLinear?.find(organ => organ.id === `${selectedOrganizationId}`)
+    }
+    return null;
+  }, [selectedOrganizationId, organsLinear])
 
   const OrganizationWidthChildUI = ({
                                       organization
