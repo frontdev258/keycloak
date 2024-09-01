@@ -222,10 +222,17 @@ const UserCrud = () => {
   }, [organizations, setOrgansLinear]);
 
   useEffect(() => {
-    if (pageType === "EDIT" && data?.attributes?.org) {
-      handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
+    if (pageType === "EDIT") {
+      Object.entries(data)
+        .filter(([key, value]) => key !== 'attributes')
+      .forEach(([key, value]) => {
+        setValue(key, value);
+      })
+      if (data?.attributes?.org) {
+        handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
+      }
     }
-  }, [organizations, data]);
+  }, [pageType, organizations, data]);
 
   const selectedOrganization = useMemo(() => (
     organsLinear.find(organ => organ.id === selectedOrganizationId)
