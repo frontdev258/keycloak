@@ -223,11 +223,13 @@ const UserCrud = () => {
 
   useEffect(() => {
     if (pageType === "EDIT") {
-      Object.entries(data)
-        .filter(([key, value]) => key !== 'attributes')
-      .forEach(([key, value]) => {
-        setValue(key, value);
-      })
+      if (data != null && Object.entries(data) != null) {
+        Object.entries(data)
+          .filter(([key, value]) => key !== 'attributes')
+          .forEach(([key, value]) => {
+            setValue(key, value);
+          })
+      }
       if (data?.attributes?.org) {
         handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
       }
