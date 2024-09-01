@@ -116,6 +116,7 @@ const UserCrud = () => {
         label: "وضعیت",
         watch,
         refetch: organizationRefetch,
+        defaultValue: true,
         options: [
           {
             id: undefined,
@@ -226,7 +227,9 @@ const UserCrud = () => {
               onClick={() => navigate("/user/list")}>بازگشت
       </button>
     </div>
-    <form onSubmitCapture={handleSubmit(onSubmitHandler)}>
+    <Box component='form'
+         id="userInfo"
+         onSubmitCapture={handleSubmit(onSubmitHandler)}>
       <Grid container spacing={3}>
         {userItems.map((formItem, index) => (
           <Grid item
@@ -263,7 +266,7 @@ const UserCrud = () => {
       <Box sx={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "end", mt: 4 }}>
         <Button
           type="submit"
-          form="filtersForm"
+          form="userInfo"
           disabled={isLoading}
           variant="contained"
           endIcon={isLoading ? <CircularProgress size={14} /> : <CheckOutlined />}
@@ -273,7 +276,7 @@ const UserCrud = () => {
           ذخیره
         </Button>
       </Box>
-    </form>
+    </Box>
     <Grid container>
       <Grid item
             lg={6}
