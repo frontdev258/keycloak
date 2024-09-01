@@ -233,7 +233,7 @@ const UserCrud = () => {
           })
       }
       if (data?.attributes?.org && organizations?.length) {
-        handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
+        handleSelectOrganization(null, organizations.find(org => org.id === data.attributes.org));
       }
     }
   }, [pageType, organizations, data]);
