@@ -222,7 +222,7 @@ const UserCrud = () => {
   }, [organizations, setOrgansLinear]);
 
   useEffect(() => {
-    if (pageType === "EDIT" && data.attributes?.org) {
+    if (pageType === "EDIT" && data?.attributes?.org) {
       handleSelectOrganization(organizations.find(org => org.id === data.attributes.org));
     }
   }, [organizations, data]);
