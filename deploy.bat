@@ -1,6 +1,6 @@
-# call npm install
+call git pull
 
-# call git pull
+call npm install
 
 call npm run build
 
