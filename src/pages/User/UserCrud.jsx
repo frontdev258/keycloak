@@ -35,7 +35,7 @@ const UserCrud = () => {
     status,
     refetch
   } = useQuery({
-    queryKey: [`http://localhost:8000/api/user/id?id=${id}`],
+    queryKey: [`https://auth.betaja.ir:8000/api/user/id?id=${id}`],
     queryFn: getApi,
     select: (res) => res.data,
     enabled: (!!id && pageType === 'EDIT')
@@ -54,7 +54,7 @@ const UserCrud = () => {
     status: organizationStatus,
     refetch: organizationRefetch
   } = useQuery({
-    queryKey: [`http://localhost:8000/api/organizations/root-organization`],
+    queryKey: [`https://auth.betaja.ir:8000/api/organizations/root-organization`],
     queryFn: getApi,
     select: (res) => res.data,
     enabled: !!id,
@@ -166,7 +166,7 @@ const UserCrud = () => {
     }
     mutate({
       method: pageType === 'CREATE' ? 'post' : 'put',
-      endpoint: 'http://localhost:8000/api/user',
+      endpoint: 'https://auth.betaja.ir:8000/api/user',
       data: {
         ...DTO,
         ...(pageType === 'EDIT' ? {id} : {})

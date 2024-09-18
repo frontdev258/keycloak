@@ -11,7 +11,7 @@ const UserList = () => {
   const navigate = useNavigate();
 
   const {data, status, refetch} = useQuery(
-    `http://localhost:8000/api/user${paramsSerializer(pagination)}`,
+    `https://auth.betaja.ir:8000/api/user${paramsSerializer(pagination)}`,
     getApi,
     {
       enabled: !!pagination,

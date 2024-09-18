@@ -32,7 +32,7 @@ const Login = () => {
 
     // "http://localhost:8000/auth/realms/mtna/protocol/openid-connect/token",
     fetch(
-      "http://localhost:8000/api/auth/login",
+      "https://auth.betaja.ir:8000/api/auth/login",
       requestOptions
     )
       .then((response) => response.text())
