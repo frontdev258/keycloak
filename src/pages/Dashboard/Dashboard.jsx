@@ -24,9 +24,9 @@ const Dashboard = () => {
     }
   }, [token]);
 
-  // `https://auth.betaja.ir:8000/api/users/${sub}/roles`,
+  // `https://auth.betaja.ir/api/users/${sub}/roles`,
   const {data, status, refetch} = useQuery(
-    `https://auth.betaja.ir:8000/api/clients`,
+    `https://auth.betaja.ir/api/clients`,
     getApi,
     {
       enabled: !!sub,
