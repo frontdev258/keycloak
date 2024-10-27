@@ -148,7 +148,7 @@ const UserCrud = () => {
           ))}
         </Box>),
         elementProps: {
-          defaultValue: data?.userEnabled || true,
+          defaultValue: data?.userEnabled ?? true,
           onChange: (event) => {
             setValue('userEnabled', event.target.value);
           }
