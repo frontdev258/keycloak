@@ -51,20 +51,21 @@ const Dashboard = () => {
               marginBlock: '0.5em'
             }}>سامانه‌های مدیران</h4>
             <div className="list flex_wrap">
-              {/*<a*/}
-              {/*    className="panels"*/}
-              {/*    target="_blank"*/}
-              {/*    rel="noreferrer"*/}
-              {/*    href={`http://192.180.9.217:3000/?token=${token}&refreshToken=${refresh_token}`}*/}
-              {/*>*/}
-              {/*  سامانه مدیریت کاربران و سطوح دسترسی*/}
-              {/*</a>*/}
               <button
                 className="panels"
                 onClick={() => navigate('/user/list')}>
-              >
-                سامانه مدیریت کاربران و سطوح دسترسی
+                >
+                سامانه مدیریت کاربران
               </button>
+              <a
+                className="pannels"
+                style={{marginInlineStart: '12px'}}
+                target="_blank"
+                rel="noreferrer noopener"
+                href={`https://auth.betaja.ir/roles?token=${token}&refreshToken=${refresh_token}`}
+              >
+                سطوح دسترسی
+              </a>
             </div>
             <hr/>
             <h4 style={{
